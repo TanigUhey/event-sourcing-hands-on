@@ -12,11 +12,11 @@ class MoneyAdded extends ShouldBeStored
     /**
      * コンストラクタ
      *
-     * @param string $accountUuid アカウントULID
+     * @param string $uuid アカウントUUID
      * @param integer $amount 入金額
      */
     public function __construct(
-        public readonly string $accountUuid,
+        public readonly string $uuid,
         public readonly int $amount
     ) {
     }
