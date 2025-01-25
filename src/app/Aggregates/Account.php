@@ -38,6 +38,13 @@ class Account extends Projection
         // TODO: Accountインスタンスを作成してreturn
     }
 
+    // public function create(string $userName): Account {
+    //     // 口座作成イベントを発行
+    //     $this->recordThat(new AccountCreated($this->uuid(), $userName));
+
+    //     return $this;
+    // }
+
     /**
      * 入金を行う
      *
