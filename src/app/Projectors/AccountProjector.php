@@ -19,10 +19,10 @@ class AccountProjector extends Projector
      */
     public function onAccountCreated(AccountCreated $event): void
     {
-        // アカウントを新規作成
-        $account = new Account(['uuid' => $event->uuid, 'user_name' => $event->userName]);
+        // // アカウントを新規作成
+        // $account = new Account(['uuid' => $event->uuid, 'user_name' => $event->userName]);
 
-        $account->save();
+        // $account->save();
     }
 
     /**
@@ -33,26 +33,26 @@ class AccountProjector extends Projector
      */
     public function onMoneyAdded(MoneyAdded $event): void
     {
-        // accountsテーブルを検索
-        $account = Account::uuid($event->uuid);
+        // // accountsテーブルを検索
+        // $account = Account::uuid($event->uuid);
 
-        if ($account === null) {
-            return;
-        }
+        // if ($account === null) {
+        //     return;
+        // }
 
-        // 残高を更新
-        $account->balance += $event->amount;
-        $account->save();
+        // // 残高を更新
+        // $account->balance += $event->amount;
+        // $account->save();
 
-        if ($account->balance > 10000) {
-            // premium_accountsテーブルを検索
-            $premiumAccount = PremiumAccount::userName($account->user_name);
+        // if ($account->balance > 10000) {
+        //     // premium_accountsテーブルを検索
+        //     $premiumAccount = PremiumAccount::userName($account->user_name);
 
-            if ($premiumAccount === null) {
-                // プレミアム登録されていなければ追加
-                (new PremiumAccount(['user_name' => $account->user_name]))->save();
-            }
-        }
+        //     if ($premiumAccount === null) {
+        //         // プレミアム登録されていなければ追加
+        //         (new PremiumAccount(['user_name' => $account->user_name]))->save();
+        //     }
+        // }
     }
 
     /**

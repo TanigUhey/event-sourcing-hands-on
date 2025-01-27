@@ -5,6 +5,7 @@ namespace App\Aggregates;
 use App\Events\Account\AccountCreated;
 use App\Events\Account\MoneyAdded;
 use App\Events\Account\MoneySubtracted;
+use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 use Spatie\EventSourcing\Projections\Projection;
 
 class Account extends Projection
@@ -29,9 +30,8 @@ class Account extends Projection
      *
      * @param string $uuid UUID
      * @param string $userName ユーザー名
-     * @return Account
      */
-    public static function create(string $uuid, string $userName): Account {
+    public static function create(string $uuid, string $userName) {
         // 口座作成イベントを発行
         event(new AccountCreated($uuid, $userName));
 
@@ -49,9 +49,8 @@ class Account extends Projection
      * 入金を行う
      *
      * @param int $amount 入金額
-     * @return void
      */
-    public function addMoney(int $amount): void {
+    public function addMoney(int $amount) {
         // 残高に入金
         $this->balance += $amount;
 
@@ -62,9 +61,8 @@ class Account extends Projection
      * 出金を行う
      *
      * @param int $amount 出金額
-     * @return void
      */
-    public function subtractMoney(int $amount): void {
+    public function subtractMoney(int $amount) {
         // TODO: 残高から出金
 
         // TODO: 出金イベントを発行
