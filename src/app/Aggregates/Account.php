@@ -5,6 +5,7 @@ namespace App\Aggregates;
 use App\Events\Account\AccountCreated;
 use App\Events\Account\MoneyAdded;
 use App\Events\Account\MoneySubtracted;
+use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 use Spatie\EventSourcing\Projections\Projection;
 
 class Account extends Projection
